@@ -1,6 +1,6 @@
 {
-  "name": "ui-library",
-  "version": "0.1.0",
+  "name": "ui-library-ux-example",
+  "version": "0.1.7",
   "main": "dist/index.js",
   "private": false,
   "files": [
@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fsrodrig/example"
+    "url": "git+https://github.com/fsrodrig/ui-library.git"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,11 +18,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --mode=development",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "clean": "rimraf dist",
+    "prepublish": "rm -rf ./dist && npm run build",
+    "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -53,11 +56,31 @@
     "@storybook/react": "^5.3.19",
     "babel-plugin-macros": "^2.8.0",
     "cross-env": "^7.0.2",
+    "css-loader": "^4.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^6.0.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1",
     "require-context.macro": "^1.2.2",
-    "styled-components": "^5.1.1"
-  }
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "styled-components": "^5.1.1",
+    "url-loader": "^4.1.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "description": "In the project directory, you can run:",
+  "bugs": {
+    "url": "https://github.com/fsrodrig/ui-library/issues"
+  },
+  "homepage": "https://github.com/fsrodrig/ui-library#readme",
+  "keywords": [
+    "test",
+    "ui-library"
+  ],
+  "author": "Federico",
+  "license": "ISC"
 }

@@ -10,9 +10,7 @@ width: auto;
 
 
 const assets = '../../assets/img/';
-
 export const Image = ({ img = 'legalshield-logo.svg' }) => {
-
     return (
         <Img src={assets + img} alt={img} />
     );
